@@ -26,6 +26,15 @@ docker_setup_env() {
     file_env 'WORLDSERVER_BINDIP' $DEFAULT_WORLDSERVER_BINDIP
     file_env 'WORLDSERVER_RATES' $DEFAULT_WORLDSERVER_RATES
     file_env 'WORLDSERVER_NAME' $DEFAULT_WORLDSERVER_NAME
+    file_env 'WORLDSERVER_REALMID' $DEFAULT_WORLDSERVER_REALMID
+    file_env 'WORLDSERVER_SOAP_PORT' $DEFAULT_WORLDSERVER_SOAP_PORT
+    file_env 'WORLDSERVER_SOAP_ENABLED' $DEFAULT_WORLDSERVER_SOAP_ENABLED
+    file_env 'WORLDSERVER_SOAP_IP' $DEFAULT_WORLDSERVER_SOAP_IP
+    file_env 'WORLDSERVER_CONSOLE_ENABLE' $DEFAULT_WORLDSERVER_CONSOLE_ENABLE
+    file_env 'WORLDSERVER_RA_ENABLE' $DEFAULT_WORLDSERVER_RA_ENABLE
+    file_env 'WORLDSERVER_RA_IP' $DEFAULT_WORLDSERVER_RA_IP
+    file_env 'WORLDSERVER_RA_PORT' $DEFAULT_WORLDSERVER_RA_PORT
+    file_env 'WORLDSERVER_RA_MINLEVEL' $DEFAULT_WORLDSERVER_RA_MINLEVEL
     file_env 'WORLDSERVER_MYSQL_AUTOCONF' $DEFAULT_WORLDSERVER_MYSQL_AUTOCONF
 
     file_env 'AUTHSERVER_MYSQL_HOST' $DEFAULT_AUTHSERVER_MYSQL_HOST
@@ -63,7 +72,15 @@ fi
 
 sed -r -i 's/^WorldServerPort = .*$/WorldServerPort = '${WORLDSERVER_WORLDSERVERPORT}'/' /home/server/wow/etc/worldserver.conf
 sed -r -i 's/^BindIP = .*$/BindIP = '${WORLDSERVER_BINDIP}'/' /home/server/wow/etc/worldserver.conf
-
+sed -r -i 's/^RealmID = .*$/RealmID = '${WORLDSERVER_REALMID}'/' /home/server/wow/etc/worldserver.conf
+sed -r -i 's/^SOAP.Port = .*$/SOAP.Port = '${WORLDSERVER_SOAP_PORT}'/' /home/server/wow/etc/worldserver.conf
+sed -r -i 's/^SOAP.Enabled = .*$/SOAP.Enabled = '${WORLDSERVER_SOAP_ENABLED}'/' /home/server/wow/etc/worldserver.conf
+sed -r -i 's/^SOAP.IP = .*$/SOAP.IP = '${WORLDSERVER_SOAP_IP}'/' /home/server/wow/etc/worldserver.conf
+sed -r -i 's/^Console.Enable = .*$/Console.Enable = '${WORLDSERVER_CONSOLE_ENABLE}'/' /home/server/wow/etc/worldserver.conf
+sed -r -i 's/^Ra.Enable = .*$/Ra.Enable = '${WORLDSERVER_RA_ENABLE}'/' /home/server/wow/etc/worldserver.conf
+sed -r -i 's/^Ra.IP = .*$/Ra.IP = '${WORLDSERVER_RA_IP}'/' /home/server/wow/etc/worldserver.conf
+sed -r -i 's/^Ra.Port = .*$/Ra.Port = '${WORLDSERVER_RA_PORT}'/' /home/server/wow/etc/worldserver.conf
+sed -r -i 's/^Ra.MinLevel = .*$/Ra.MinLevel = '${WORLDSERVER_RA_MINLEVEL}'/' /home/server/wow/etc/worldserver.conf
 sed -r -i 's/^Motd = .*$/Motd = "Welcome to '${WORLDSERVER_NAME}' x'${WORLDSERVER_RATES}' server."/' /home/server/wow/etc/worldserver.conf
 
 sed -r -i 's/^Rate.Health            = .*$/Rate.Health            = '${WORLDSERVER_RATES}'/' /home/server/wow/etc/worldserver.conf
